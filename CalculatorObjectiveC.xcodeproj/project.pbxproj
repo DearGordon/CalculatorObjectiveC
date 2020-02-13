@@ -16,6 +16,7 @@
 		5431ACE023F51F1600C1E058 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5431ACDF23F51F1600C1E058 /* main.m */; };
 		5431ACEA23F51F1600C1E058 /* CalculatorObjectiveCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5431ACE923F51F1600C1E058 /* CalculatorObjectiveCTests.m */; };
 		5431ACF523F51F1600C1E058 /* CalculatorObjectiveCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5431ACF423F51F1600C1E058 /* CalculatorObjectiveCUITests.m */; };
+		5431AD0423F5467D00C1E058 /* ViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5431AD0323F5467D00C1E058 /* ViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		5431ACF023F51F1600C1E058 /* CalculatorObjectiveCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorObjectiveCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5431ACF423F51F1600C1E058 /* CalculatorObjectiveCUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorObjectiveCUITests.m; sourceTree = "<group>"; };
 		5431ACF623F51F1600C1E058 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5431AD0223F5467D00C1E058 /* ViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewModel.h; sourceTree = "<group>"; };
+		5431AD0323F5467D00C1E058 /* ViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 				5431ACD323F51F1500C1E058 /* ViewController.h */,
 				5431ACD423F51F1500C1E058 /* ViewController.m */,
 				5431ACD623F51F1500C1E058 /* Main.storyboard */,
+				5431AD0223F5467D00C1E058 /* ViewModel.h */,
+				5431AD0323F5467D00C1E058 /* ViewModel.m */,
 				5431ACD923F51F1600C1E058 /* Assets.xcassets */,
 				5431ACDB23F51F1600C1E058 /* LaunchScreen.storyboard */,
 				5431ACDE23F51F1600C1E058 /* Info.plist */,
@@ -269,6 +274,7 @@
 			files = (
 				5431ACD523F51F1500C1E058 /* ViewController.m in Sources */,
 				5431ACCF23F51F1500C1E058 /* AppDelegate.m in Sources */,
+				5431AD0423F5467D00C1E058 /* ViewModel.m in Sources */,
 				5431ACE023F51F1600C1E058 /* main.m in Sources */,
 				5431ACD223F51F1500C1E058 /* SceneDelegate.m in Sources */,
 			);

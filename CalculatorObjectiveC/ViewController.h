@@ -10,6 +10,9 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *resultLabel;
+@property NSDecimalNumber * leftNumber;
+@property NSDecimalNumber * rightNumber;
 
 @end
 
