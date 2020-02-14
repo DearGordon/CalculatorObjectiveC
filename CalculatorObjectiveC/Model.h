@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Model : NSObject
 
+-(void)doOperation:(NSDecimalNumber*)leftNumber :(NSDecimalNumber*)rightNumber;
+
 @end
 
 NS_ASSUME_NONNULL_END
