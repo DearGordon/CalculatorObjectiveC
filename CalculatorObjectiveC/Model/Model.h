@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Model : NSObject
 
 -(void)doOperation:(NSDecimalNumber*)leftNumber :(NSDecimalNumber*)rightNumber;
+-(void)test;
 
 @end
 
