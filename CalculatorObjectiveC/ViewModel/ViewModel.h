@@ -12,14 +12,26 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ViewModel : NSObject
+{
+    BOOL appendingNumber;
+}
 
 @property Model * model;
-@property (nonatomic) NSString * resultLabeltest;
+@property (nonatomic) NSString * resultLabeltext;
 
 @property (retain, nonatomic) NSDecimalNumber * leftNumber;
 @property (retain, nonatomic) NSDecimalNumber * rightNumber;
+@property (retain, nonatomic) NSDecimalNumber * resultDecNumber;
+@property NSString * myOperator;
 
--(void)doOperation;
+
+@property (nonatomic, copy) void(^reloadView)(void);
+
+-(void)putNumber:(NSString*)myNumber;
+-(void)putOperator:(NSString*)myOperator;
+-(void)doClear;
+-(void)doSwitchPosiAndNegati;
+-(void)doResult;
 
 @end
 

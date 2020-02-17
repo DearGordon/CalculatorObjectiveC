@@ -42,7 +42,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                 <state key="normal" title="%"/>
                                                 <connections>
-                                                    <action selector="percent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2BF-ZM-Cpy"/>
+                                                    <action selector="operator:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hPp-VQ-dTP"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajP-ap-NBu">

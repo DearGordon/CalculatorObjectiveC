@@ -9,8 +9,28 @@
 #import "Model.h"
 
 @implementation Model
-- (void)test {
-    NSLog(@"test here");
+
+- (NSDecimalNumber *)doOperation:(NSString *)myOperator :(NSDecimalNumber *)leftNumber :(NSDecimalNumber *)rightNumber
+{
+    SEL seletor = NSSelectorFromString(myOperator);
+    NSDecimalNumber * result = [leftNumber performSelector:seletor withObject:rightNumber];
+    
+    return result;
 }
 
+
+
+
 @end
+//    NSString * text = [sender titleLabel].text;
+    
+//    if (self.leftNumber == NULL) {
+//        self.leftNumber = [NSDecimalNumber decimalNumberWithString:text];
+//    } else {
+//        self.rightNumber = [NSDecimalNumber decimalNumberWithString:text];
+//    }
+//    if (self.leftNumber != NULL, self.rightNumber != NULL) {
+//        self.leftNumber = [self.leftNumber decimalNumberByAdding:self.rightNumber];
+//    }
+//
+//    NSLog(@"left=%@,right=%@",self.leftNumber,self.rightNumber);

@@ -19,39 +19,40 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.viewModel = [ViewModel new];
+    [self bindViewModel];
+}
+
+-(void)bindViewModel
+{
+    [self.viewModel setReloadView:^{
+        self.resultLabel.text = self.viewModel.resultLabeltext;
+    }];
 }
 
 - (IBAction)numberTextBtn:(id)sender
 {
-    
-    [self.viewModel doOperation];
-//    NSString * text = [sender titleLabel].text;
-    
-//    if (self.leftNumber == NULL) {
-//        self.leftNumber = [NSDecimalNumber decimalNumberWithString:text];
-//    } else {
-//        self.rightNumber = [NSDecimalNumber decimalNumberWithString:text];
-//    }
-//    if (self.leftNumber != NULL, self.rightNumber != NULL) {
-//        self.leftNumber = [self.leftNumber decimalNumberByAdding:self.rightNumber];
-//    }
-//
-//    NSLog(@"left=%@,right=%@",self.leftNumber,self.rightNumber);
+    //numbers
+    [self.viewModel putNumber:[sender titleLabel].text];
 }
 
 - (IBAction)doResult:(id)sender {
+    //=
+    [self.viewModel doResult];
 }
 
 - (IBAction)operator:(id)sender {
+    //+-*/%
+    [self.viewModel putOperator:[sender titleLabel].text];
 }
 
 - (IBAction)clear:(id)sender {
-}
-
-- (IBAction)percent:(id)sender {
+    //AC
+    [self.viewModel doClear];
 }
 
 - (IBAction)switchPosiAndNegati:(id)sender {
+    //-/+
+    [self.viewModel doSwitchPosiAndNegati];
 }
 
 

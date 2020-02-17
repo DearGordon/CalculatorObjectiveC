@@ -11,9 +11,23 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Model : NSObject
+{
+    SEL * selector;
+}
 
--(void)doOperation:(NSDecimalNumber*)leftNumber :(NSDecimalNumber*)rightNumber;
--(void)test;
+@property (retain, nonatomic) NSDecimalNumber * leftNumber;
+@property (retain, nonatomic) NSDecimalNumber * rightNumber;
+@property NSDictionary * selectorDict;
+@property NSString * resulText;
+
+//-(NSDecimalNumber*)putNumber:(NSDecimalNumber*)myNumber;
+-(NSDecimalNumber*)doOperation:(NSString*)myOperator :(NSDecimalNumber*)leftNumber :(NSDecimalNumber*)rightNumber;
+//-(NSDecimalNumber*)clear;
+//-(NSDecimalNumber*)doSwitchPosiAndNegati;
+//-(NSDecimalNumber*)doResult;
+
+//-(NSDecimalNumber*)result;
+
 
 @end
 
