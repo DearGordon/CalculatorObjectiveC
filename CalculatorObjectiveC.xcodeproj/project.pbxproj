@@ -114,14 +114,11 @@
 				5431ACCE23F51F1500C1E058 /* AppDelegate.m */,
 				5431ACD023F51F1500C1E058 /* SceneDelegate.h */,
 				5431ACD123F51F1500C1E058 /* SceneDelegate.m */,
-				5431ACD323F51F1500C1E058 /* ViewController.h */,
-				5431ACD423F51F1500C1E058 /* ViewController.m */,
-				5431ACD623F51F1500C1E058 /* Main.storyboard */,
-				5431AD0223F5467D00C1E058 /* ViewModel.h */,
-				5431AD0323F5467D00C1E058 /* ViewModel.m */,
-				54105CB423F697190063A815 /* Model.h */,
-				54105CB523F697190063A815 /* Model.m */,
+				5431AD0523FA34E200C1E058 /* View */,
+				5431AD0623FA350400C1E058 /* ViewModel */,
+				5431AD0723FA352100C1E058 /* Model */,
 				5431ACD923F51F1600C1E058 /* Assets.xcassets */,
+				5431ACD623F51F1500C1E058 /* Main.storyboard */,
 				5431ACDB23F51F1600C1E058 /* LaunchScreen.storyboard */,
 				5431ACDE23F51F1600C1E058 /* Info.plist */,
 				5431ACDF23F51F1600C1E058 /* main.m */,
@@ -145,6 +142,33 @@
 				5431ACF623F51F1600C1E058 /* Info.plist */,
 			);
 			path = CalculatorObjectiveCUITests;
+			sourceTree = "<group>";
+		};
+		5431AD0523FA34E200C1E058 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5431ACD323F51F1500C1E058 /* ViewController.h */,
+				5431ACD423F51F1500C1E058 /* ViewController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5431AD0623FA350400C1E058 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5431AD0223F5467D00C1E058 /* ViewModel.h */,
+				5431AD0323F5467D00C1E058 /* ViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5431AD0723FA352100C1E058 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				54105CB423F697190063A815 /* Model.h */,
+				54105CB523F697190063A815 /* Model.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
