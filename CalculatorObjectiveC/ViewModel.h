@@ -7,13 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Model.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ViewModel : UIViewController
+@interface ViewModel : NSObject
+
+@property Model * model;
+@property (nonatomic) NSString * resultLabeltest;
 
 @property (retain, nonatomic) NSDecimalNumber * leftNumber;
 @property (retain, nonatomic) NSDecimalNumber * rightNumber;
+
+-(void)doOperation;
 
 @end
 

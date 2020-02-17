@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ViewModel.h"
 
 @interface ViewController : UIViewController
+
+@property ViewModel * viewModel;
 
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @property NSDecimalNumber * leftNumber;

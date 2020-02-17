@@ -18,22 +18,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.viewModel = [ViewModel new];
 }
 
-- (IBAction)numberTextBtn:(id)sender {
-    NSString * text = [sender titleLabel].text;
+- (IBAction)numberTextBtn:(id)sender
+{
     
-    if (self.leftNumber == NULL) {
-        self.leftNumber = [NSDecimalNumber decimalNumberWithString:text];
-    } else {
-        self.rightNumber = [NSDecimalNumber decimalNumberWithString:text];
-    }
-    if (self.leftNumber != NULL, self.rightNumber != NULL) {
-        self.leftNumber = [self.leftNumber decimalNumberByAdding:self.rightNumber];
-    }
+    [self.viewModel doOperation];
+//    NSString * text = [sender titleLabel].text;
     
-    NSLog(@"left=%@,right=%@",self.leftNumber,self.rightNumber);
+//    if (self.leftNumber == NULL) {
+//        self.leftNumber = [NSDecimalNumber decimalNumberWithString:text];
+//    } else {
+//        self.rightNumber = [NSDecimalNumber decimalNumberWithString:text];
+//    }
+//    if (self.leftNumber != NULL, self.rightNumber != NULL) {
+//        self.leftNumber = [self.leftNumber decimalNumberByAdding:self.rightNumber];
+//    }
+//
+//    NSLog(@"left=%@,right=%@",self.leftNumber,self.rightNumber);
 }
 
 - (IBAction)doResult:(id)sender {

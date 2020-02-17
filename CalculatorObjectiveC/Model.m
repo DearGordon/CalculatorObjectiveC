@@ -9,7 +9,8 @@
 #import "Model.h"
 
 @implementation Model
-
-
+- (void)test {
+    NSLog(@"test here");
+}
 
 @end

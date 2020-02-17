@@ -9,16 +9,20 @@
 #import "ViewModel.h"
 
 @interface ViewModel ()
-
 @end
 
 @implementation ViewModel
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+ 
+- (void)setResultLabeltest:(NSString *)resultLabeltest
+{
+    
 }
 
+-(void)doOperation
+{
+    self.model = [Model new];
+    [self.model test];
+}
 
 
 @end
