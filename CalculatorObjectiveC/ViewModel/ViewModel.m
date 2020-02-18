@@ -76,7 +76,7 @@
             _rightNumber = nil;
             _leftNumber = _resultDecNumber;
         }
-        
+        if (_resultDecNumber) { [self setTextView:_resultDecNumber]; }
         _myOperator = newOperator;
         resetNumber = YES;
         return;
