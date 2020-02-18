@@ -68,7 +68,6 @@
         _resultDecNumber = _leftNumber;
         _myOperator = newOperator;
         _rightNumber = nil;
-        NSLog(@"!_leftNumber L:%@,O:%@,R:%@",_leftNumber,_myOperator,_rightNumber);
         
     } else if (!_rightNumber) {
         _rightNumber = [NSDecimalNumber decimalNumberWithString:_resultLabeltext];
@@ -80,7 +79,6 @@
         }
         
         _myOperator = newOperator;
-        NSLog(@"else L:%@,O:%@,R:%@,Result:%@",_leftNumber,_myOperator,_rightNumber,_resultDecNumber);
         resetNumber = YES;
         return;
     } else {
@@ -125,16 +123,9 @@
 
 - (void)doSwitchPosiAndNegati
 {
-//    NSString *s = _resultLabeltext;
-//    _resultLabeltext = [s hasPrefix:@"-"] ? [s substringFromIndex:1] : [@"-" stringByAppendingString:s];
-    
-    
     NSDecimalNumber * negative = [NSDecimalNumber decimalNumberWithString:@"-1"];
     _resultDecNumber = [NSDecimalNumber decimalNumberWithString:_resultLabeltext];
-     
-    
     [self setTextView:[_resultDecNumber decimalNumberByMultiplyingBy:negative]];
-    
     _myOperator = nil;
     resetNumber = NO;
 }

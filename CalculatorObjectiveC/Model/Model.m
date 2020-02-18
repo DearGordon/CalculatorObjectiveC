@@ -22,6 +22,7 @@
    NSString * operatorObject = [selectorDict objectForKey:myOperator];
     
     SEL seletor = NSSelectorFromString(operatorObject);
+    
     NSDecimalNumber * result = [leftNumber performSelector:seletor withObject:rightNumber];
     
     return result;
