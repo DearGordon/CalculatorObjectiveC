@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ViewModel : NSObject
 {
-    BOOL appendingNumber;
+    BOOL resetNumber;
 }
 
 @property Model * model;
@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @property (nonatomic, copy) void(^reloadView)(void);
+@property (nonatomic, copy) void(^doAlert)(void);
 
 -(void)putNumber:(NSString*)myNumber;
 -(void)putOperator:(NSString*)myOperator;

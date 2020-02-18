@@ -20,12 +20,22 @@
     [super viewDidLoad];
     self.viewModel = [ViewModel new];
     [self bindViewModel];
+    [self bindAlert];
+}
+-(void)bindAlert
+{
+    [self.viewModel setDoAlert:^{
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Not go this way" message:@"can't devide 0" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * ok = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:true completion:nil];
+    }];
 }
 
 -(void)bindViewModel
 {
     [self.viewModel setReloadView:^{
-        self.resultLabel.text = self.viewModel.resultLabeltext;
+        self.resultLabel.text =  self.viewModel.resultLabeltext;
     }];
 }
 

@@ -17,94 +17,142 @@
 {
     self = [super init];
     if (self) {
-        self.model = [Model new];
+        _model = [Model new];
+        _resultLabeltext = @"0";
     }
     return self;
 }
 
 -(void)putNumber:(NSString*)myNumber
 {
-    if (appendingNumber) {
-        <#statements#>
+    if (resetNumber) {
+        _resultLabeltext = @"0";
+        resetNumber = NO;
     }
     
-    NSDecimalNumber * number = [NSDecimalNumber decimalNumberWithString:myNumber];
-    if (self.leftNumber == nil) {
-        self.leftNumber = number;
-    } else {
-        self.rightNumber = number;
-    }
-    self.resultDecNumber = number;
-    self.resultLabeltext = [self deciNumToString:self.resultDecNumber];
-    
-    self.reloadView();
-}
-
-- (void)putOperator:(NSString *)myOperator
-{
-    if (self.leftNumber == nil) {
+    if ([myNumber isEqualToString:@"."]) {
+        if ([_resultLabeltext rangeOfString:@"."].location == NSNotFound) {
+            _resultLabeltext = [_resultLabeltext stringByAppendingString:@"."];
+            _reloadView();
+        }
         return;
     }
     
-    
-    NSDictionary * selectorDict = [NSDictionary dictionaryWithObjectsAndKeys:
-    @"decimalNumberByAdding:", @"+",
-    @"decimalNumberBySubtracting:", @"-",
-    @"decimalNumberByMultiplyingBy:", @"x",
-    @"decimalNumberByDividingBy:", @"/",
-    nil];
-    
-    if (self.rightNumber == nil) {
-        self.myOperator = [selectorDict objectForKey:myOperator];
+    if ([_resultLabeltext isEqualToString:@"0"]) {
+        if ([myNumber isEqualToString:@"0"]) {
+            return;
+        }
+        _resultLabeltext = myNumber;
     } else {
-        self.leftNumber = [self.model doOperation:self.myOperator :self.leftNumber :self.rightNumber];
-        self.resultDecNumber = self.leftNumber;
-        self.rightNumber = nil;
-        self.myOperator = [selectorDict objectForKey:myOperator];
+        _resultLabeltext = [_resultLabeltext stringByAppendingString:myNumber];
         
     }
-    self.resultLabeltext = [self deciNumToString:self.resultDecNumber];
+    _reloadView();
+}
 
-    self.reloadView();
+- (void)putOperator:(NSString *)newOperator
+{
+    
+    if ([newOperator isEqualToString:@"%"]) {
+        NSDecimalNumber * ten = [NSDecimalNumber decimalNumberWithString:@"0.1"];
+        _resultDecNumber = [NSDecimalNumber decimalNumberWithString:_resultLabeltext];
+        _resultDecNumber = [_resultDecNumber decimalNumberByMultiplyingBy:ten];
+        
+        [self setTextView:_resultDecNumber];
+        resetNumber = NO;
+        return;
+    }
+    
+    if (!_leftNumber) {
+        _leftNumber = [NSDecimalNumber decimalNumberWithString:_resultLabeltext];
+        _resultDecNumber = _leftNumber;
+        _myOperator = newOperator;
+        _rightNumber = nil;
+        NSLog(@"!_leftNumber L:%@,O:%@,R:%@",_leftNumber,_myOperator,_rightNumber);
+        
+    } else if (!_rightNumber) {
+        _rightNumber = [NSDecimalNumber decimalNumberWithString:_resultLabeltext];
+        
+        if ([self checkCalculation] && _myOperator != nil) {
+            _resultDecNumber = [self.model doOperation:_myOperator :_leftNumber :_rightNumber];
+            _rightNumber = nil;
+            _leftNumber = _resultDecNumber;
+        }
+        
+        _myOperator = newOperator;
+        NSLog(@"else L:%@,O:%@,R:%@,Result:%@",_leftNumber,_myOperator,_rightNumber,_resultDecNumber);
+        resetNumber = YES;
+        return;
+    } else {
+        _myOperator = newOperator;
+    }
+    
+    if (_resultDecNumber) { [self setTextView:_resultDecNumber]; }
+    
+    resetNumber = YES;
 }
 
 - (void)doResult
 {
-    if (self.myOperator == nil || self.rightNumber == nil) {
+    if (_myOperator == nil) {
         return;
     }
-    self.resultDecNumber = [self.model doOperation:self.myOperator :self.leftNumber :self.rightNumber];
-    self.resultLabeltext = [self deciNumToString:self.resultDecNumber];
+    _rightNumber = [NSDecimalNumber decimalNumberWithString:_resultLabeltext];
     
-    self.reloadView();
+    if ([self checkCalculation] && _myOperator != nil) {
+        _resultDecNumber = [self.model doOperation:_myOperator :_leftNumber :_rightNumber];
+    }
+    [self setTextView:_resultDecNumber];
+    
+    _rightNumber = nil;
+    _leftNumber = nil;
+    _resultDecNumber = nil;
+    _myOperator = nil;
+    resetNumber = YES;
 }
 
 - (void)doClear
 {
-    self.rightNumber = nil;
-    self.leftNumber = nil;
-    self.myOperator = nil;
-    self.resultDecNumber = nil;
-    self.resultLabeltext = @"0";
+    _rightNumber = nil;
+    _leftNumber = nil;
+    _myOperator = nil;
+    _resultDecNumber = nil;
+    _resultLabeltext = @"0";
     
-    self.reloadView();
+    resetNumber = NO;
+    _reloadView();
 }
 
 - (void)doSwitchPosiAndNegati
 {
-    NSDecimalNumber * negative = [NSDecimalNumber decimalNumberWithString:@"-1"];
-    self.resultDecNumber =  [self.resultDecNumber decimalNumberByMultiplyingBy:negative];
-    self.resultLabeltext = [self deciNumToString:self.resultDecNumber];
+//    NSString *s = _resultLabeltext;
+//    _resultLabeltext = [s hasPrefix:@"-"] ? [s substringFromIndex:1] : [@"-" stringByAppendingString:s];
     
-    self.reloadView();
+    
+    NSDecimalNumber * negative = [NSDecimalNumber decimalNumberWithString:@"-1"];
+    _resultDecNumber = [NSDecimalNumber decimalNumberWithString:_resultLabeltext];
+     
+    
+    [self setTextView:[_resultDecNumber decimalNumberByMultiplyingBy:negative]];
+    
+    _myOperator = nil;
+    resetNumber = NO;
 }
 
-
-
-
--(NSString*)deciNumToString:(NSDecimalNumber*)number
+-(BOOL)checkCalculation
 {
-    return [NSString stringWithFormat:@"%@",number];
+    if ([_myOperator isEqualToString:@"/"] && [_rightNumber floatValue] == 0) {
+        _doAlert();
+        return false;
+    }
+    return true;
 }
- 
+
+-(void)setTextView:(NSDecimalNumber*)number
+{
+    _resultDecNumber = number;
+    _resultLabeltext = [NSString stringWithFormat:@"%@",number];
+    _reloadView();
+}
+
 @end
