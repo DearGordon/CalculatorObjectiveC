@@ -52,7 +52,6 @@
 
 - (void)putOperator:(NSString *)newOperator
 {
-    
     if ([newOperator isEqualToString:@"%"]) {
         NSDecimalNumber * ten = [NSDecimalNumber decimalNumberWithString:@"0.1"];
         _resultDecNumber = [NSDecimalNumber decimalNumberWithString:_resultLabeltext];

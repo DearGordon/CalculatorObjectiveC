@@ -8,18 +8,19 @@
 
 #import "Model.h"
 
+
 @implementation Model
 
 - (NSDecimalNumber *)doOperation:(NSString *)myOperator :(NSDecimalNumber *)leftNumber :(NSDecimalNumber *)rightNumber
 {
     NSDictionary * selectorDict = [NSDictionary dictionaryWithObjectsAndKeys:
-    @"decimalNumberByAdding:", @"+",
-    @"decimalNumberBySubtracting:", @"-",
-    @"decimalNumberByMultiplyingBy:", @"x",
-    @"decimalNumberByDividingBy:", @"/",
-    nil];
+                                   @"decimalNumberByAdding:", @"+",
+                                   @"decimalNumberBySubtracting:", @"-",
+                                   @"decimalNumberByMultiplyingBy:", @"x",
+                                   @"decimalNumberByDividingBy:", @"/",
+                                   nil];
     
-   NSString * operatorObject = [selectorDict objectForKey:myOperator];
+    NSString * operatorObject = [selectorDict objectForKey:myOperator];
     
     SEL seletor = NSSelectorFromString(operatorObject);
     

@@ -16,26 +16,28 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.viewModel = [ViewModel new];
     [self bindViewModel];
-    [self bindAlert];
-}
--(void)bindAlert
-{
-    [self.viewModel setDoAlert:^{
-        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Not go this way" message:@"can't devide 0" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction * ok = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:nil];
-        [alert addAction:ok];
-        [self presentViewController:alert animated:true completion:nil];
-    }];
 }
 
 -(void)bindViewModel
 {
+    __weak typeof (self) weakSelf = self;
+    
+    [self.viewModel setDoAlert:^{
+        __strong typeof (self) strongSelf = weakSelf;
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Not go this way" message:@"can't devide 0" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * ok = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:ok];
+        [strongSelf presentViewController:alert animated:true completion:nil];
+    }];
+    
     [self.viewModel setReloadView:^{
-        self.resultLabel.text =  self.viewModel.resultLabeltext;
+        __strong typeof (self) strongSelf = weakSelf;
+        strongSelf.resultLabel.text =  strongSelf.viewModel.resultLabeltext;
     }];
 }
 
@@ -45,22 +47,26 @@
     [self.viewModel putNumber:[sender titleLabel].text];
 }
 
-- (IBAction)doResult:(id)sender {
+- (IBAction)doResult:(id)sender
+{
     //=
     [self.viewModel doResult];
 }
 
-- (IBAction)operator:(id)sender {
+- (IBAction)operator:(id)sender
+{
     //+-*/%
     [self.viewModel putOperator:[sender titleLabel].text];
 }
 
-- (IBAction)clear:(id)sender {
+- (IBAction)clear:(id)sender
+{
     //AC
     [self.viewModel doClear];
 }
 
-- (IBAction)switchPosiAndNegati:(id)sender {
+- (IBAction)switchPosiAndNegati:(id)sender
+{
     //-/+
     [self.viewModel doSwitchPosiAndNegati];
 }
