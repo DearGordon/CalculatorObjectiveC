@@ -13,18 +13,22 @@
 
 - (NSDecimalNumber *)doOperation:(NSString *)myOperator :(NSDecimalNumber *)leftNumber :(NSDecimalNumber *)rightNumber
 {
-    NSDictionary * selectorDict = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   @"decimalNumberByAdding:", @"+",
-                                   @"decimalNumberBySubtracting:", @"-",
-                                   @"decimalNumberByMultiplyingBy:", @"x",
-                                   @"decimalNumberByDividingBy:", @"/",
-                                   nil];
+    NSDecimalNumber * result = [NSDecimalNumber new];
+    if ([myOperator isEqualToString:@"+"]) {
+        result = [leftNumber decimalNumberByAdding:rightNumber];
+    }
     
-    NSString * operatorObject = [selectorDict objectForKey:myOperator];
+    if ([myOperator isEqualToString:@"-"]) {
+        result = [leftNumber decimalNumberBySubtracting:rightNumber];
+    }
     
-    SEL seletor = NSSelectorFromString(operatorObject);
+    if ([myOperator isEqualToString:@"x"]) {
+        result = [leftNumber decimalNumberByMultiplyingBy:rightNumber];
+    }
     
-    NSDecimalNumber * result = [leftNumber performSelector:seletor withObject:rightNumber];
+    if ([myOperator isEqualToString:@"/"]) {
+        result = [leftNumber decimalNumberByDividingBy:rightNumber];
+    }
     
     return result;
 }

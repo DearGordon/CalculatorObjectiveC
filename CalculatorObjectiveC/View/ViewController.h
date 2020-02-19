@@ -14,8 +14,6 @@
 @property ViewModel * viewModel;
 
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
-@property NSDecimalNumber * leftNumber;
-@property NSDecimalNumber * rightNumber;
 
 @end
 
